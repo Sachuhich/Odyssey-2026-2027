@@ -15,5 +15,6 @@ export const usersDatabase = [
     { name: "Коровина Дарья", kostiks: [] },
     { name: "Корнилова София", kostiks: [] },
     { name: "Писаренко Артём", kostiks: [] },
-    { name: "Казаков Алексей", kostiks: [] }
+    { name: "Казаков Алексей", kostiks: [] },
+    { name: "Ворожцова Елизавета", kostiks: [] },
 ];
