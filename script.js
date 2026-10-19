@@ -188,7 +188,18 @@ function insertDetailsPanelInline() {
         dayEvents.forEach(ev => {
             const dev = document.createElement('div');
             dev.className = `detail-item ${getColorClass(ev.type)}`;
-            dev.innerHTML = `<strong>${ev.event}</strong> — ${ev.text}`;
+            
+            let innerHTML = `<div class="event-title" style="font-weight: bold; font-size: 16px;">${ev.event}</div>`;
+            
+            if (ev.time && ev.time.trim() !== "") {
+                innerHTML += `<div class="event-time">⏰ ${ev.time}</div>`;
+            }
+            
+            if (ev.text && ev.text.trim() !== "") {
+                innerHTML += `<div class="event-text">${ev.text}</div>`;
+            }
+            
+            dev.innerHTML = innerHTML;
             panel.appendChild(dev);
         });
     } else {
@@ -207,6 +218,7 @@ function insertDetailsPanelInline() {
         grid.insertBefore(panel, cards[rowEndIndex + 1]);
     }
 }
+
 
 document.addEventListener('click', function() {
     if (selectedDateKey !== null) {
