@@ -16,7 +16,14 @@ export function renderTierlist() {
     const activeUsers = processedUsers.filter(user => user.points > 0);
     const zeroUsers = processedUsers.filter(user => user.points === 0);
 
-    activeUsers.sort((a, b) => b.points - a.points);
+    // УМНАЯ СОРТИРОВКА: сначала по баллам (убывание), а при равенстве — по алфавиту (А-Я)
+    activeUsers.sort((a, b) => {
+        if (b.points !== a.points) {
+            return b.points - a.points; // Если баллы разные, сортируем по баллам
+        }
+        return a.name.localeCompare(b.name); // Если баллы равны, сортируем по алфавиту имён
+    });
+
     zeroUsers.sort((a, b) => a.name.localeCompare(b.name));
 
     activeUsers.forEach((user, index) => {
@@ -90,4 +97,4 @@ document.addEventListener('click', function() {
         selectedUserName = null;
         renderTierlist();
     }
-});
+});ф
