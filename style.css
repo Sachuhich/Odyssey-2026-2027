@@ -1,8 +1,18 @@
 @import url('https://googleapis.com');
 
+:root {
+    --color-odyssey: #198754;
+    --color-shso: #dca100;
+    --color-spbso: #dc3545;
+    --color-youth: #0056b3;
+    --color-bg-dark: #121212;
+    --color-bg-card: #1e1e1e;
+    --color-primary: #0070f3;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
+    background-color: var(--color-bg-dark);
     color: #ffffff;
     margin: 0;
     padding: 20px;
@@ -11,6 +21,7 @@ body {
     align-items: center;
 }
 
+/* Навигация */
 .main-nav-wrapper {
     display: flex;
     justify-content: center;
@@ -23,12 +34,15 @@ body {
 .main-nav {
     display: flex;
     width: 100%;
+    max-width: 100%;
     gap: 8px;
     box-sizing: border-box;
+    justify-content: center; 
 }
 
 .nav-btn {
-    flex: 1;
+    flex: 1; 
+    max-width: 375px;
     background-color: #222;
     color: white;
     border: 1px solid #444;
@@ -43,21 +57,24 @@ body {
 }
 
 .nav-btn.active, .nav-btn:hover {
-    background-color: #0070f3;
-    border-color: #0070f3;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: scale(0.98);
 }
 
+/* Заголовок */
 .graffiti-title {
     font-family: 'Rubik Mono One', 'Impact', sans-serif;
     font-size: 32px;
     text-transform: uppercase;
     text-align: center;
-    color: #0070f3;
+    color: var(--color-primary);
     text-shadow: 3px 3px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 4px 4px 10px rgba(0,0,0,0.8);
     letter-spacing: 2px;
     margin-bottom: 20px;
 }
 
+/* Сетка выбора месяцев */
 .season-grid-wrapper {
     display: flex;
     justify-content: center;
@@ -95,8 +112,8 @@ body {
 }
 
 .month-btn.active, .month-btn:hover {
-    background-color: #0070f3;
-    border-color: #0070f3;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .month-btn-empty {
@@ -106,6 +123,7 @@ body {
     pointer-events: none;
 }
 
+/* Страницы */
 .page {
     display: none;
     width: 100%;
@@ -116,6 +134,7 @@ body {
     display: block;
 }
 
+/* Календарная сетка */
 .weekdays-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -137,7 +156,7 @@ body {
 }
 
 .day-card, .empty-day {
-    background: #1e1e1e;
+    background: var(--color-bg-card);
     border: 1px solid #333;
     border-radius: 8px;
     padding: 4px;
@@ -158,11 +177,11 @@ body {
 }
 
 .day-card:hover {
-    border-color: #0070f3;
+    border-color: var(--color-primary);
 }
 
 .day-card.selected {
-    border-color: #0070f3 !important;
+    border-color: var(--color-primary) !important;
     background: #252525;
 }
 
@@ -180,9 +199,9 @@ body {
     font-size: 16px;
     font-weight: bold;
     color: #aaa;
-    position: static;
 }
 
+/* Мини-точки событий на календаре */
 .event-dots-container {
     position: absolute;
     top: 0;
@@ -199,36 +218,29 @@ body {
     height: 10px;
     border-radius: 50%;
     position: absolute;
-    display: none;
 }
 
-/* Новое круговое распределение больших точек по углам */
-.event-dot-mini.bg-odyssey { display: block; top: 6px; right: 6px; }      /* Жёлтый — верхний правый */
-.event-dot-mini.bg-shso    { display: block; bottom: 6px; right: 6px; }   /* Зелёный — нижний правый */
-.event-dot-mini.bg-spbso   { display: block; bottom: 6px; left: 6px; }    /* Красный — нижний левый */
-.event-dot-mini.bg-youth   { display: block; top: 6px; left: 6px; }       /* Синий — верхний левый */
+.event-dot-mini.bg-odyssey { top: 6px; right: 6px; }
+.event-dot-mini.bg-shso    { bottom: 6px; right: 6px; }
+.event-dot-mini.bg-spbso   { bottom: 6px; left: 6px; }
+.event-dot-mini.bg-youth   { top: 6px; left: 6px; }
 
-/* Фоновые цвета плашек по новому регламенту */
-.bg-odyssey { background-color: #dca100; color: black; }
-.bg-shso    { background-color: #198754; color: white; }
-.bg-spbso   { background-color: #dc3545; color: white; }
-.bg-youth   { background-color: #0056b3; color: white; }
+.bg-odyssey, .odyssey-dot { background-color: var(--color-odyssey); }
+.bg-shso,    .shso-dot    { background-color: var(--color-shso); }
+.bg-spbso,   .spbso-dot   { background-color: var(--color-spbso); }
+.bg-youth,   .youth-dot   { background-color: var(--color-youth); }
 
+/* Панель детальной информации дня */
 .details-panel {
     grid-column: span 7;
     background: #1a1a1a;
-    border: 1px solid #0070f3;
     border-radius: 8px;
     padding: 15px;
     margin: 5px 0 10px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    animation: fadeIn opacity 0.2s ease-out;
-}
-
-.details-panel.no-border-panel {
-    border: none !important;
+    animation: fadeIn 0.2s ease-out;
 }
 
 .detail-item {
@@ -237,8 +249,10 @@ body {
     font-size: 15px;
     font-weight: 500;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    color: white;
 }
 
+/* Легенда типов событий */
 .legend-inline-format {
     margin-top: 30px;
     background: #161616;
@@ -268,12 +282,7 @@ body {
     display: inline-block;
 }
 
-/* Цвета индикаторов в легенде */
-.odyssey-dot { background-color: #dca100; }
-.shso-dot    { background-color: #198754; }
-.spbso-dot   { background-color: #dc3545; }
-.youth-dot   { background-color: #0056b3; }
-
+/* Рейтинг бойцов (Tierlist) */
 .rating-container {
     display: flex;
     flex-direction: column;
@@ -285,7 +294,7 @@ body {
 .rating-row {
     display: flex;
     align-items: center;
-    background: #1e1e1e;
+    background: var(--color-bg-card);
     border: 1px solid #333;
     border-radius: 8px;
     padding: 15px 20px;
@@ -293,10 +302,11 @@ body {
     transition: 0.2s;
     box-sizing: border-box;
     width: 100%;
+    cursor: pointer;
 }
 
-.rating-row:hover {
-    border-color: #0070f3;
+.rating-row:hover, .rating-row.selected {
+    border-color: var(--color-primary);
     background: #252525;
 }
 
@@ -333,28 +343,7 @@ body {
     width: 100%;
 }
 
-.rating-footer-panel {
-    margin-top: 40px;
-}
-
-.footer-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: #ffffff;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: color 0.2s ease;
-}
-
-.footer-name:hover {
-    color: #0070f3;
-}
-
-.rating-row.selected {
-    border-color: #0070f3 !important;
-    background: #252525;
-}
-
+/* Всплывающая история костиксов */
 .rating-details-panel {
     background: #1a1a1a;
     border-radius: 8px;
@@ -362,12 +351,7 @@ body {
     margin: -5px 0 5px 0;
     width: 100%;
     box-sizing: border-box;
-    animation: fadeInRating 0.2s ease-out;
-}
-
-@keyframes fadeInRating {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    animation: fadeIn 0.2s ease-out;
 }
 
 .history-text {
@@ -380,4 +364,10 @@ body {
 
 .italic-text {
     font-weight: 500;
+}
+
+/* Универсальная плавная анимация появления панелей */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
