@@ -97,4 +97,4 @@ document.addEventListener('click', function() {
         selectedUserName = null;
         renderTierlist();
     }
-});ф
+});
