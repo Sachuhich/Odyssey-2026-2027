@@ -371,3 +371,16 @@ body {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* Стили для 5 ссылок на людей внизу страницы */
+.footer-name, a.footer-name {
+    color: #0070f3 !important;        /* Фирменный синий цвет сайта */
+    text-decoration: none !important; /* Убирает подчёркивание */
+    font-weight: 300;                  /* Делает шрифт узким и тонким */
+    letter-spacing: -0.2px;            /* Дополнительно сужает интервал между буквами */
+    display: inline-block;
+}
+
+.footer-name:hover {
+    opacity: 0.8;
+}
