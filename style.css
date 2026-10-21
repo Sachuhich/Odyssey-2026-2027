@@ -373,7 +373,8 @@ body {
 }
 
 /* Стили для 5 ссылок на людей внизу страницы */
-.footer-name, a.footer-name {
+.footer-name,
+a.footer-name {
     color: #0070f3 !important;        /* Фирменный синий цвет сайта */
     text-decoration: none !important; /* Убирает подчёркивание */
     font-weight: 300;                  /* Делает шрифт узким и тонким */
