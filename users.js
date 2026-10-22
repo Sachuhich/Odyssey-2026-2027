@@ -8,7 +8,7 @@ export const usersDatabase = [
     { name: "Беляев Георгий", kostiks: [1,] },
 
     { name: "Гришина Мария", kostiks: [] },
-    { name: "Ковалева Анастасия", kostiks: [] },
+    { name: "Ковалева Анастасия", kostiks: [2,] },
 
     { name: "Епанешникова Ульяна", kostiks: [] },
     { name: "Рожинова Дарья", kostiks: [] },
